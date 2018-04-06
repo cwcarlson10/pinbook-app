@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    title
+      | PinbookApp
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body.container
+    header.masthead.mb-auto
+      .inner
+        h3.masthead-brand
+          | Pinbook
+        nav.nav.nav-masthead.justify-content-center
+          = link_to "Home", root_path, class: "nav-link active"
+          - if user_signed_in?
+            - if current_user.profile
+              = link_to "Profile", profile_path(current_user.profile), class: "nav-link"
+            - else
+              = link_to "Create Profile", new_profile_path , class: "nav-link"
+          a.nav-link[href="#"]
+            | Features
+          a.nav-link[href="#"]
+            | Contact
+    = yield

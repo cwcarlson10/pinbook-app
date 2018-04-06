@@ -1,0 +1,23 @@
+.text-center
+  main.inner.cover[role="main"]
+    h1.cover-heading
+      | Pinbook
+    p.lead
+      | Here is the text we put about what this site does.
+    p.lead
+      - unless user_signed_in?
+        = link_to "Sign Up",
+                  new_user_registration_path,
+                  class: "btn btn-lg btn-secondary"
+    /a.btn.btn-lg.btn-secondary[href="#"]
+    /  | Sign Up
+/footer.mastfoot.mt-auto
+/  .inner
+/    p
+/      | Cover template for 
+/      a[href="https://getbootstrap.com/"]
+/        | Bootstrap
+/      | , by 
+/      a[href="https://twitter.com/mdo"]
+/        | @mdo
+/      | .
