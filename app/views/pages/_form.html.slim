@@ -2,9 +2,9 @@
   = f.error_notification
 
   .form-inputs
-    = f.input      :label
-    = f.input      :title
-    = f.input      :description
+    = f.input :label, collection: Page::LABEL_TYPES
+    = f.input :title
+    = f.input :description
     = f.file_field :image
 
   .form-actions

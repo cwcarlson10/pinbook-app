@@ -6,20 +6,25 @@ html
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  body.container
-    header.masthead.mb-auto
-      .inner
-        h3.masthead-brand
-          | Pinbook
-        nav.nav.nav-masthead.justify-content-center
-          = link_to "Home", root_path, class: "nav-link active"
-          - if user_signed_in?
-            - if current_user.profile
-              = link_to "Profile", profile_path(current_user.profile), class: "nav-link"
-            - else
-              = link_to "Create Profile", new_profile_path , class: "nav-link"
-          a.nav-link[href="#"]
-            | Features
-          a.nav-link[href="#"]
-            | Contact
-    = yield
+  body
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
+      .container
+        = link_to "MyPinBook", root_path, class: "navbar-brand"
+        button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"]
+          span.navbar-toggler-icon
+        #navbarNavDropdown.collapse.navbar-collapse
+          ul.navbar-nav
+            - if user_signed_in?
+              li.nav-item.active
+                - if current_user.profile
+                    = link_to "Profile", profile_path(current_user.profile), class: "nav-link"
+                - else
+                  = link_to "Create Profile", new_profile_path , class: "nav-link"
+            li.nav-item
+              a.nav-link[href="#"]
+                | Features
+            li.nav-item
+              a.nav-link[href="#"]
+                | Pricing
+    .container
+      = yield
