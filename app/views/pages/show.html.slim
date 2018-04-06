@@ -11,7 +11,7 @@ p
   = @page.description
 p
   strong Image:
-  = image_tag @page.image_url
+  = image_tag @page.image_url(:thumb)
 p
   strong User:
   = @page.profile.first_name + @page.profile.last_name
