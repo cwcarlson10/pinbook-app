@@ -153,6 +153,8 @@ GEM
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
+    petergate (1.8.1)
+      activerecord (> 4.0.0)
     pg (1.0.0)
     popper_js (1.12.9)
     pry (0.11.3)
@@ -284,6 +286,7 @@ DEPENDENCIES
   mini_backtrace
   mini_magick
   minitest-reporters
+  petergate
   pg (>= 0.18, < 2.0)
   pry-byebug
   pry-rails
