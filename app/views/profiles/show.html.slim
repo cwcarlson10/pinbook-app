@@ -2,25 +2,25 @@ h1 Profile
 p#notice = notice
 
 .row
-  .col-md-8
-    ul.list-unstyled
-      li
+  .col-md-4
+    = image_tag @profile.avatar.url
+  .col-md-8.card
+    .card-body
+      p.card-text
         strong First Name: 
         = @profile.first_name
-      li
+      p.card-text
         strong Last Name: 
         = @profile.last_name
-      li
+      p.card-text
         strong Phone Number: 
         = @profile.phone_number
-      li
+      p.card-text
         strong Email: 
         = @profile.email
-      li
+      p.card-text
         strong Address: 
         = @profile.address
-  .col-md-4
-    = image_tag(@profile.avatar.url)
 
   .col-md-12
     = link_to "Edit", edit_profile_path(@profile), class: "btn btn-primary"
@@ -28,12 +28,15 @@ p#notice = notice
     = link_to "New Page", new_page_path, class: "btn btn-success"
 .row
   .col-md-12
+    br
+    h2 Pages
+  .col-md-12
     - @pages.each do |page|
       .card.width-card
         = image_tag page.image_url, class: "card-img-top"
         .card-body
           h5.card-title
-            = page.title
+            = link_to page.title, page
           p.card-text
             strong Label:
             = page.label
@@ -42,4 +45,4 @@ p#notice = notice
             = page.description
           p.card-text
             strong User:
-            = page.profile.first_name + page.profile.last_name
+            = page.user_name

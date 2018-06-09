@@ -1,8 +1,8 @@
 p#notice = notice
 
-h6
-  strong User: 
-  p = @page.profile.first_name + " " + @page.profile.last_name
+h4 #{@page.user_name}'s #{@page.title} Page
+= link_to "View Profile", profile_path(@page.profile)
+br
 
 h5
   strong Label: 
