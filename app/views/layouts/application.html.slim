@@ -15,16 +15,23 @@ html
         #navbarNavDropdown.collapse.navbar-collapse
           ul.navbar-nav
             - if user_signed_in?
-              li.nav-item.active
+              li.nav-item
                 - if current_user.profile
                     = link_to "Profile", profile_path(current_user.profile), class: "nav-link"
                 - else
                   = link_to "Create Profile", new_profile_path , class: "nav-link"
-            li.nav-item
-              a.nav-link[href="#"]
-                | Features
-            li.nav-item
-              a.nav-link[href="#"]
-                | Pricing
+              li.nav-item
+                = link_to "Pages", pages_path, class: "nav-link"
+              li.nav-item
+                = link_to "Log Out", destroy_user_session_path, class: "nav-link", method: :delete
+            - else
+              li.nav-item
+                = link_to "Login", new_user_session_path, class: "nav-link"
+            /li.nav-item
+            /  a.nav-link[href="#"]
+            /    | Features
+            /li.nav-item
+            /  a.nav-link[href="#"]
+            /    | Pricing
     .container
       = yield

@@ -1,2 +1,6 @@
-h1 Profiles#edit
-p Find me in app/views/profiles/edit.html.slim
+h1 Edit Profile
+
+= render "form"
+
+= link_to 'Show', @profile, class: "btn btn-primary"
+= link_to 'Back', root_path, class: "btn btn-danger"

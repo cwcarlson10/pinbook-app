@@ -1,20 +1,45 @@
 h1 Profile
 p#notice = notice
 
-p
-  strong First Name:
-  = @profile.first_name
-p
-  strong Last Name:
-  = @profile.last_name
-p
-  strong Phone Number:
-  = @profile.phone_number
-p
-  strong Address:
-  = @profile.address
+.row
+  .col-md-8
+    ul.list-unstyled
+      li
+        strong First Name: 
+        = @profile.first_name
+      li
+        strong Last Name: 
+        = @profile.last_name
+      li
+        strong Phone Number: 
+        = @profile.phone_number
+      li
+        strong Email: 
+        = @profile.email
+      li
+        strong Address: 
+        = @profile.address
+  .col-md-4
+    = image_tag(@profile.avatar.url)
 
-= link_to 'Edit', edit_profile_path(@profile)
-'|
-= link_to 'Back', root_path
-= link_to "Pages", pages_path
+  .col-md-12
+    = link_to "Edit", edit_profile_path(@profile), class: "btn btn-primary"
+    = link_to "Back", root_path, class: "btn btn-secondary"
+    = link_to "New Page", new_page_path, class: "btn btn-success"
+.row
+  .col-md-12
+    - @pages.each do |page|
+      .card.width-card
+        = image_tag page.image_url, class: "card-img-top"
+        .card-body
+          h5.card-title
+            = page.title
+          p.card-text
+            strong Label:
+            = page.label
+          p.card-text
+            strong Description:
+            = page.description
+          p.card-text
+            strong User:
+            = page.profile.first_name + page.profile.last_name

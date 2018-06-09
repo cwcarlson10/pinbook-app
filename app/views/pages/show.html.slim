@@ -1,21 +1,20 @@
 p#notice = notice
 
-p
-  strong Label:
-  = @page.label
-p
-  strong Title:
-  = @page.title
-p
-  strong Description:
-  = @page.description
-p
-  strong Image:
-  = image_tag @page.image_url
-p
-  strong User:
-  = @page.profile.first_name + @page.profile.last_name
+h6
+  strong User: 
+  p = @page.profile.first_name + " " + @page.profile.last_name
 
-= link_to 'Edit', edit_page_path(@page)
-'|
-= link_to 'Back', pages_path
+h5
+  strong Label: 
+  p = @page.label
+h5
+  strong Title: 
+  p = @page.title
+= image_tag @page.image_url
+
+h6
+  strong Description: 
+  p = @page.description
+
+= link_to 'Edit', edit_page_path(@page), class: "btn btn-primary"
+= link_to 'Back', pages_path, class: "btn btn-secondary"

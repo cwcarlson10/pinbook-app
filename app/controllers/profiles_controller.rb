@@ -5,6 +5,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
+    @pages = @profile.pages
   end
 
   def edit
@@ -20,9 +21,21 @@ class ProfilesController < ApplicationController
 
     respond_to do |format|
       if @profile.save
-        format.html { redirect_to @profile, notice: "Note was successfully created." }
+        format.html { redirect_to @profile, notice: "Your Profile was successfully created." }
       else
         format.html { render :new }
+      end
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @profile.update(profile_params)
+        format.html { redirect_to @profile, notice: 'Page was successfully updated.' }
+        format.json { render :show, status: :ok, location: @profile }
+      else
+        format.html { render :edit }
+        format.json { render json: @profile.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -30,7 +43,7 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:first_name, :last_name, :address, :phone_number, :user_id)
+    params.require(:profile).permit(:first_name, :last_name, :avatar, :address, :phone_number, :user_id)
   end
 
   def set_profile
