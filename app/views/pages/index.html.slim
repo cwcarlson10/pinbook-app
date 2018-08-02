@@ -17,9 +17,10 @@ h1 Pages
           p.card-text
             strong User:
             = link_to page.user_name, profile_path(page.profile)
-          = link_to "Show", page, class: "btn btn-primary"
-          = link_to "Edit", edit_page_path(page), class: "btn btn-secondary"
-          = link_to "Delete", page, class:"btn btn-danger", data: { confirm: 'Are you sure?' }, method: :delete
+          - if current_user == page.user
+            = link_to "Show", page, class: "btn btn-primary"
+            = link_to "Edit", edit_page_path(page), class: "btn btn-secondary"
+            = link_to "Delete", page, class:"btn btn-danger", data: { confirm: 'Are you sure?' }, method: :delete
 
   .col-md-12
     = link_to "New Page", new_page_path, class: "btn btn-primary"

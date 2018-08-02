@@ -5,4 +5,5 @@ class Page < ApplicationRecord
   LABEL_TYPES = ["Keepers", "Traders", "ISO"]
 
   delegate :user_name, to: :profile
+  delegate :user,      to: :profile
 end
